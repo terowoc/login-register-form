@@ -4,7 +4,7 @@
 	<title>Kirish</title>
 </head>
 <body>
-<form action="validate/log.php" method="post">
+<form action="log.php" method="post">
 	<label>Loginingiz</label>
 	<input type="text" name="username"><br>
 	<label>Parolingiz</label>
