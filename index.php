@@ -17,10 +17,10 @@ switch ($_GET['action']) {
 	default:
 		echo '<table border="1" widht="300">
 <td><a href="login.php">Kirish</a></td>
-<td><a href="register.php">Ro\'yxatdan o\'tish</a></td>';
+<td><a href="register.php">Ro\'yxatdan o\'tish</a></td>
+</table>';
 		break;
 }
 ?>
-</table>
 </body>
 </html>
