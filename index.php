@@ -4,7 +4,6 @@
 	<title>Login-Register form</title>
 </head>
 <body>
-</body>
 <?php
 switch ($_GET['action']) {
 	case 'register':
