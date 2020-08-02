@@ -4,7 +4,7 @@
 	<title>Ro'yxatdan o'tish</title>
 </head>
 <body>
-<form action="validate/reg.php" method="post">
+<form action="reg.php" method="post">
 	<label>Loginingiz</label>
 	<input type="text" name="username"><br>
 	<label>Emailingiz</label>
