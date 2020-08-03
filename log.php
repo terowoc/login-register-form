@@ -27,6 +27,10 @@ if (isset($_POST['submit'])) {
 }
 
 $pass = sha1(md5($password));
+
+// Pastdagi joy "SQL injection" deb atalgan keng tarqalgan (boshlang'ichlar orasidagi) muammodir
+// Shuni hal qilishga harakat qilib koring
+// Bunga o'xshash xatolar boshqa pagelar da ham bor
 $sql = "SELECT * FROM users where login = '$ism' and pass='$pass'";
 $result = mysqli_query($connect, $sql);
 $conn = mysqli_fetch_assoc($result);
