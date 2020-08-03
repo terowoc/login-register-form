@@ -24,6 +24,11 @@ if (isset($_POST['submit'])) {
 		}
 	}
 
+	if ($password != $password2) {
+		echo "Parollar mos kelmayabdi";
+		die();
+	}
+	
 	if (empty($_POST['password'])) {
 		echo "Parolingizni kiritmadingiz.";
 		die();
@@ -45,11 +50,6 @@ if (isset($_POST['submit'])) {
 			die();
 		}
 	}
-}
-
-if ($password != $password2) {
-	echo "Parollar mos kelmayabdi";
-	die();
 }
 
 $sql = "SELECT * FROM users where login = '$username'";
