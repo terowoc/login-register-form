@@ -3,7 +3,7 @@
 require '../includes/header.php';
 require '../database/conn.php';
 
-if ($_SESSION['login']) {
+if (!check_auth()) {
 	?>
 <div class="container">
   	<div class="row py-5">

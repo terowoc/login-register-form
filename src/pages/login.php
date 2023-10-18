@@ -10,7 +10,7 @@ if (!check_auth()) {
 			<h1 class="mb-5">Логин</h1>
 
         		<?php flash();?>
-			<form method="post" action="./validation/log.php">
+			<form method="post" action="../validation/log.php">
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" id="username" name="username" placeholder="Логин" value="<?php if (isset($_COOKIE['username'])) {echo $_COOKIE['username'];}?>" required>
 				</div>
