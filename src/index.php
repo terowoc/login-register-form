@@ -17,16 +17,14 @@ if (check_auth()) {
         $section->addText("Дата рождения - " . $_POST['birthday']);
 
         $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        if (!is_dir('docs/' . $user)) {
-            mkdir('docs/' . $user);
-        }
         $file_name = strtolower($_POST['firstname']) . '-' . strtolower($_POST['lastname']);
         $file = 'docs/' . $user . '/' . date('h_i_s_d_m_Y') . '_' . $file_name . '.docx';
         $objWriter->save($file);
 
         $sql = "INSERT INTO files (user, name, link) VALUES ('" . $user . "', '" . $file_name . "', '../" . $file . "')";
         mysqli_query($conn, $sql);
-        header('Location: /');
+        $_SESSION['word'] = $file . '|' . $file_name;
+        header('Location: index.php');
     }
 
     ?>
@@ -57,6 +55,7 @@ if (check_auth()) {
 				</div>
 
 				<button type="submit" name="submit" class="btn btn-primary">Генерировать </button>
+        		<?php word();?>
 			</form>
 		</div>
 	</div>

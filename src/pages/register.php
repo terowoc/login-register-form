@@ -21,6 +21,7 @@ if (!check_auth()) {
 
                         setcookie('username', $username, time() + (86400 * 30));
                         setcookie('password', $password, time() + (86400 * 30));
+                        mkdir('../docs/' . $username);
 
                         flash('Вы успешно зарегистрировались!');
                         header('Location: login.php');

@@ -1,4 +1,3 @@
 # login-register-form
-Login Register form with php
+Demo : https://authlog.azimboev.uz/index.php
 # Abdulloh Azimboev
-Demo : https://asdasd.xvest.ru/loginreg/
