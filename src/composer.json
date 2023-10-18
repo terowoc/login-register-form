@@ -1,0 +1,16 @@
+{
+    "name": "terowoc/login-register-form",
+    "description": "Тестовое задания",
+    "type": "project",
+    "require": {
+        "doctrine/dbal": "^3.7",
+        "phpoffice/phpword": "^1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abdulloh Azimboev",
+            "email": "dev@azimboev.uz"
+        }
+    ]
+}
