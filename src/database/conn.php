@@ -1,15 +1,18 @@
 <?php
 
-require '../vendor/autoload.php';
-use Doctrine\DBAL\DriverManager;
 
-$connectionParams = [
-	'dbname' => 'user6652_authlog',
-	'user' => 'user6652_authlog',
-	'password' => 'qw34tyui',
-	'host' => 'localhost',
-	'driver' => 'pdo_mysql',
-];
+define('DB_SERVER','localhost');
+define('DB_USER','user6652_authlog');
+define('DB_PASS' ,'qw34tyui');
+define('DB_NAME', 'user6652_authlog');
 
-$conn = DriverManager::getConnection($connectionParams);
+$conn = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
+
+if (mysqli_connect_errno())
+
+{
+
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
+
+}
 ?>

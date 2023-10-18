@@ -4,55 +4,46 @@ require '../includes/header.php';
 require '../database/conn.php';
 
 if (check_auth()) {
-	?>
+    $sql = "SELECT * FROM files WHERE user ='" . $_SESSION['user'] . "'";
+    $result = mysqli_query($conn, $sql);
+    $length = mysqli_num_rows($result);
+    if ($length > 0) {
+        flash();
+        ?>
 <div class="container">
   	<div class="row py-5">
     	<div class="col-12">
-
-			<?php
-$user_docs = $conn->createQueryBuilder()
-		->select('*')
-		->from('files')
-		->where('user = :user')
-		->setParameter('user', $_SESSION['user'])
-		->execute()
-		->fetchAll();
-
-	if ($user_docs == null) {
-		flash('Вы еще не сгенерировали !');
-		header('Location: /');
-	} else {
-		?>
 		    <table class="table">
-		    <thead>
-		        <tr>
-		            <th scope="col">ID</th>
-		            <th scope="col">Имя</th>
-		            <th scope="col">Действия</th>
-		            </tr>
-		    </thead>
-		    <tbody>
-		    <?php
-foreach ($user_docs as $document) {
-			echo '
-								<tr>
-						            <th scope="row">' . $document['id'] . '</th>
-						            <td>' . $document['name'] . '</td>
-						            <td><a href="' . $document['link'] . '"> Скачать</a></td>
-						        </tr>';
-		}
-		?>
-		    </tbody>
+			    <thead>
+			        <tr>
+			            <th scope="col">Имя</th>
+			            <th scope="col">Действия</th>
+			            </tr>
+			    </thead>
+
+		    	<tbody>
+					<?php
+while ($document = mysqli_fetch_array($result)) {
+            echo '<tr>
+		            <td>' . $document['name'] . '</td>
+		            <td>
+		            	<a href="' . $document['link'] . '"> Скачать |</a>
+		            	<a href="delete.php?id=' . $document['id'] . '"> Удалить</a>
+		            </td>
+		        </tr>';
+        }
+        ?>
+		    	</tbody>
 		    </table>
-		    <?php
-}
-	?>
 		</div>
 	</div>
 </div>
-<?php
-} else {
-	header('Location: /');
-}
+			<?php
 require '../includes/footer.php';
-?>
+    } else {
+        flash('Вы еще не сгенерировали !');
+        header('Location: /');
+    }
+} else {
+    header('Location: /');
+}
