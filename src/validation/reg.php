@@ -25,8 +25,8 @@ if ($_POST['password'] == $_POST['password2']) {
 					->setParameter('pass', password_hash($_POST['password'], PASSWORD_DEFAULT))
 					->execute();
 
-				setcookie('username', $_POST['username'], time() + 3600);
-				setcookie('password', $_POST['password'], time() + 3600);
+				setcookie('username', $_POST['username'], time() + (86400 * 30));
+				setcookie('password', $_POST['password'], time() + (86400 * 30));
 
 				flash('Вы успешно зарегистрировались!');
 				header('Location: ../pages/login.php');

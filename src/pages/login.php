@@ -16,7 +16,7 @@ if (!check_auth()) {
 				</div>
 
 				<div class="input-group mb-3">
-				  <input class="form-control" id="password" name="password" placeholder="Пароль" value="<?php if (isset($_COOKIE['password'])) {echo $_COOKIE['password'];}?>" required>
+				  <input class="form-control" type="password" id="password" name="password" placeholder="Пароль" value="<?php if (isset($_COOKIE['username'])) {echo $_COOKIE['username'];}?>" required>
 				  <span class="input-group-text">
 				    <i class="bi bi-eye" id="togglePassword"
 				   style="cursor: pointer"></i>

@@ -2,12 +2,12 @@
 
 require 'includes/header.php';
 
-if (!check_auth()) {
+if (check_auth()) {
 	?>
 <div class="container">
   	<div class="row py-5">
     	<div class="col-12">
-            <h1>Добро пожаловать <?=$_SESSION['user']?>!</h1>
+            <h1>Добро пожаловать <?php if (isset($_SESSION['user'])) {echo $_SESSION['user'];}?>!</h1>
         		<?php flash();?>
 			<form method="post" action="validation/generator.php">
 				<div class="mb-3">

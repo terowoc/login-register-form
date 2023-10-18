@@ -3,7 +3,7 @@
 require '../includes/header.php';
 require '../database/conn.php';
 
-if (!check_auth()) {
+if (check_auth()) {
 	?>
 <div class="container">
   	<div class="row py-5">
@@ -52,18 +52,7 @@ foreach ($user_docs as $document) {
 </div>
 <?php
 } else {
-	?>
-<div class="container">
-  	<div class="row py-5">
-    	<div class="col-lg-6">
-            <h1>Login or Register</h1>
-
-            <a href="pages/register.php">Register</a>
-            <a href="pages/login.php">Login</a>
-		</div>
-	</div>
-</div>
-<?php
+	header('Location: /');
 }
 require '../includes/footer.php';
 ?>

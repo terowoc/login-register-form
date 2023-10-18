@@ -13,8 +13,8 @@ $user = $conn->createQueryBuilder()
 if ($user) {
 	if (password_verify($_POST['password'], $user['password'])) {
 		if (isset($_POST['rememberme'])) {
-			setcookie('username', $_POST['username'], time() + 3600);
-			setcookie('password', $_POST['password'], time() + 3600);
+			setcookie('username', $_POST['username'], time() + (86400 * 30));
+			setcookie('password', $_POST['password'], time() + (86400 * 30));
 		} else {
 			setcookie('username', '');
 			setcookie('password', '');

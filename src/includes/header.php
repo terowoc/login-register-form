@@ -21,7 +21,7 @@ require 'functions.php';
 	    <div class="navbar-nav">
 	      <a class="nav-item nav-link" href="/">Главная страница</a>
 <?php
-if (!check_auth()) {
+if (check_auth()) {
 	?>
 	      <a class="nav-item nav-link" href="/pages/user-docs.php">Мои документы</a>
 	      <a class="nav-item nav-link" href="/pages/logout.php">Выйти</a>

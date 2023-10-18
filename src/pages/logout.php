@@ -2,5 +2,6 @@
 
 require '../includes/functions.php';
 
-$_SESSION['login'] = false;
+unset($_SESSION['login']);
+unset($_SESSION['user']);
 header('Location: /');

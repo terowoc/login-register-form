@@ -16,7 +16,7 @@ if (!check_auth()) {
 				</div>
 
 				<div class="input-group mb-3">
-				  <input class="form-control" id="password" name="password" placeholder="Пароль" required>
+				  <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
 				  <span class="input-group-text">
 				    <i class="bi bi-eye" id="togglePassword"
 				   style="cursor: pointer"></i>
@@ -24,7 +24,7 @@ if (!check_auth()) {
 				</div>
 
 				<div class="input-group mb-3">
-				  <input class="form-control" id="password2" name="password2" placeholder="Повторный пароль"required>
+				  <input type="password" class="form-control" id="password2" name="password2" placeholder="Повторный пароль"required>
 				</div>
 
 				<button type="submit" name="submit" class="btn btn-primary">Регистрация</button>
