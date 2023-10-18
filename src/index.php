@@ -2,7 +2,7 @@
 
 require 'includes/header.php';
 
-if ($_SESSION['login']) {
+if (!check_auth()) {
 	?>
 <div class="container">
   	<div class="row py-5">
