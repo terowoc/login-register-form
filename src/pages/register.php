@@ -10,7 +10,7 @@ if (!check_auth()) {
     if (isset($_POST['submit'])) {
         if ($password == $_POST['password2']) {
             if (mb_strlen($username) >= 8) {
-                if (preg_match("#^[a-z0-9]{1,15}$#i", $username)) {
+                if (preg_match("#^[a-zA-Z0-9]{1,15}$#i", $username)) {
                     if (mb_strlen($password) >= 8) {
                         if (preg_match("/^.*(?=.{7,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $password)) {
                             $sql = "SELECT * FROM users WHERE username ='$username'";
