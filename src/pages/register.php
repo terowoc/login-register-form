@@ -11,22 +11,30 @@ if (!check_auth()) {
         if ($password == $_POST['password2']) {
             if (mb_strlen($username) >= 8) {
                 if (preg_match("#^[a-z0-9]{1,15}$#i", $username)) {
-                    $sql = "SELECT * FROM users WHERE username ='$username'";
-                    $result = mysqli_query($conn, $sql);
-                    $user = mysqli_fetch_array($result);
+                    if (mb_strlen($password) >= 8) {
+                        if (preg_match("/^.*(?=.{7,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $password)) {
+                            $sql = "SELECT * FROM users WHERE username ='$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $user = mysqli_fetch_array($result);
 
-                    if (!$user) {
-                        $sql = "INSERT INTO users (username, password) VALUES ('" . $username . "', '" . password_hash($password, PASSWORD_DEFAULT) . "')";
-                        mysqli_query($conn, $sql);
+                            if (!$user) {
+                                $sql = "INSERT INTO users (username, password) VALUES ('" . $username . "', '" . password_hash($password, PASSWORD_DEFAULT) . "')";
+                                mysqli_query($conn, $sql);
 
-                        setcookie('username', $username, time() + (86400 * 30));
-                        setcookie('password', $password, time() + (86400 * 30));
-                        mkdir('../docs/' . $username);
+                                setcookie('username', $username, time() + (86400 * 30));
+                                setcookie('password', $password, time() + (86400 * 30));
+                                mkdir('../docs/' . $username);
 
-                        flash('Вы успешно зарегистрировались!');
-                        header('Location: login.php');
+                                flash('Вы успешно зарегистрировались!');
+                                header('Location: login.php');
+                            } else {
+                                flash('Это имя пользователя уже занято.');
+                            }
+                        } else {
+                            flash('Пароль должен содержать минимум один заглавнуя букву и один цифру!');
+                        }
                     } else {
-                        flash('Это имя пользователя уже занято.');
+                        flash('Пароль должен содержать минимум 8 символов!');
                     }
                 } else {
                     flash('Логин должен состоять из латинских букв и/или цифр!');
